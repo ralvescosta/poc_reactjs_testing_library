@@ -12,11 +12,11 @@ export const Navigation = () => {
         </li>
 
         <li>
-          <Link to="/about">List</Link>
+          <Link to="/list">List</Link>
         </li>
 
         <li>
-          <Link to="/users">Done</Link>
+          <Link to="/done">Done</Link>
         </li>
       </ul>
     </nav>
