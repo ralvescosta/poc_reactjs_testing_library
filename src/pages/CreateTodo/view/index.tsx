@@ -1,19 +1,20 @@
 import React from 'react'
+import "./styles.css"
 
-export const CreateTodoPage = () => {
+export const CreateTodoView = () => {
   return (
     <div className="container">
       <form className="form">
-        <label>Task Name</label>
-        <input />
+        <label className="label">Task Name</label>
+        <input className="input" />
 
-        <label>Task Description</label>
-        <input />
+        <label className="label">Task Description</label>
+        <input className="input" />
 
-        <label>Priority</label>
-        <input />
+        <label className="label">Priority</label>
+        <input className="input" />
 
-        <button>Add</button>
+        <button className="button">Add</button>
       </form>
     </div>
   )

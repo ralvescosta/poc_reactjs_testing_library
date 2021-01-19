@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const HomePage = () => {
+import {HomeView} from './view'
+
+export const Home = () => {
   return (
-    <div>
-      <h1>List</h1>
-    </div>
+    <HomeView />
   )
 }

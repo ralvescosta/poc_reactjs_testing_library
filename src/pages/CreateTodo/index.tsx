@@ -1,9 +1,9 @@
 import React from 'react'
 
-import {CreateTodoPage} from './view'
+import {CreateTodoView} from './view'
 
 export const CreateTodo = () => {
   return (
-    <CreateTodoPage />
+    <CreateTodoView />
   )
 }
