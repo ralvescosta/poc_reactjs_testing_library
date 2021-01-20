@@ -22,7 +22,7 @@ export const CreateTodoView = () => {
     const priority = priorityRef.current?.value as string
 
     try {
-      const todo = TodoModel.create({ todoName, todoDescription, priority })
+      const todo = TodoModel.create({ name: todoName, description: todoDescription, priority })
       dispatchActions(createTodoAction(todo))
       alert('Todo created')
 

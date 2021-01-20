@@ -13,7 +13,7 @@ export const HomeView = () => {
       {
         todos.length
           ? (
-              todos.map(todo => <TodoItem key={todo.todoName}/>)
+              todos.map(todo => <TodoItem key={todo.id} todo={todo}/>)
             )
           : null
       }
