@@ -22,16 +22,16 @@ export const todosReducer = (state = INITIAL_STATE, action: ActionType) => {
       }
 
     case Types.SET_TODO:
-      const todoIndex = state.todos.findIndex(todo => todo.id === action.payload.todo.id)
+      const todoIndex = state.todos.findIndex(todo => todo.id === action.payload.id)
       if (todoIndex === -1) return state
-      state.todos[todoIndex] = action.payload.todo
+      state.todos[todoIndex] = action.payload
 
       return { ...state }
 
     case Types.DELETE_TODO:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.payload)
+        todos: state.todos.filter(todo => todo.id !== action.payload.id)
       }
 
     default:

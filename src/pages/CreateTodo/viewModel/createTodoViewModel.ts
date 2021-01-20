@@ -37,6 +37,10 @@ export const useCreateTodoViewModel = ({ createTodoUsecase }: Props): IUseCreate
     }
     dispatchActions(createTodoAction(result))
 
+    if (todoNameInputRef.current?.value)todoNameInputRef.current.value = ''
+    if (todoDescriptionInputRef.current?.value) todoDescriptionInputRef.current.value = ''
+    if (priorityInputRef.current?.value) priorityInputRef.current.value = ''
+
     return alert('Todo Created')
   }
 

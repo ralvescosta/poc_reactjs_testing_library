@@ -14,7 +14,15 @@ export const HomeView = ({ viewModel }: Props) => {
       {
         viewModel.todos.length
           ? (
-              viewModel.todos.map(todo => <TodoItem key={todo.id} todo={todo} context="Home" doneButton={() => {}} deleteButton={() => {}}/>)
+              viewModel.todos.map(todo =>
+                <TodoItem
+                  key={todo.id}
+                  todo={todo}
+                  context="Home"
+                  doneButton={() => viewModel.markTodoAsDone(todo)}
+                  deleteButton={() => viewModel.deleteTodo(todo)}
+                />
+              )
             )
           : null
       }
