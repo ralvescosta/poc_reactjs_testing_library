@@ -6,7 +6,7 @@ import { Navigation } from './components/Navigation'
 
 import { CreateTodo } from './pages/CreateTodo'
 import { Home } from './pages/Home'
-import { DonePage } from './pages/Done'
+import { Done } from './pages/Done'
 
 export const AppRoute = () => {
   return (
@@ -23,7 +23,7 @@ export const AppRoute = () => {
           </Route>
 
           <Route path="/done">
-            <DonePage />
+            <Done />
           </Route>
         </Switch>
     </BrowserRouter>

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const DonePage = () => {
+import { DoneView } from './view'
+
+export const Done = () => {
   return (
-    <div>
-      <h1>Done</h1>
-    </div>
+    <DoneView />
   )
 }
