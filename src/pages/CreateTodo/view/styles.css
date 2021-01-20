@@ -1,0 +1,45 @@
+.create-todo-container {
+  width: 100%;
+  height: 50%;
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-todo-form {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 6px;
+  padding: 35px;
+}
+
+.create-todo-label {
+  align-self: start;
+  margin: 5px 0px 3px 0;
+}
+
+.create-todo-input {
+  width: 260px;
+  height: 20px;
+  border-radius: 6px;
+  border-width: 0.5px;
+}
+
+.create-todo-button {
+  margin-top: 15px;
+  width: 260px;
+  height: 25px;
+  border-radius: 6px;
+  border-width: 0.5px;
+  cursor: pointer;
+}
+
+.create-todo-button:hover {
+  opacity: 0.7;
+}

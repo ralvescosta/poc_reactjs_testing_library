@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.css'
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const Navigation = () => {
   return (
@@ -12,11 +12,11 @@ export const Navigation = () => {
         </li>
 
         <li>
-          <Link to="/about">List</Link>
+          <Link to="/create">Create</Link>
         </li>
 
         <li>
-          <Link to="/users">Done</Link>
+          <Link to="/done">Done</Link>
         </li>
       </ul>
     </nav>
