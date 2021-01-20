@@ -21,6 +21,13 @@ export const todosReducer = (state = INITIAL_STATE, action: ActionType) => {
         todos: [...state.todos, action.payload]
       }
 
+    case Types.MARK_TODO_AS_DONE:
+      const todoIndex = state.todos.findIndex(todo => todo.id === action.payload)
+      if (todoIndex === -1) return state
+
+      state.todos[todoIndex].changeState({ newState: 'done' })
+      return { ...state }
+
     default:
       return state
   }

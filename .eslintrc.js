@@ -21,6 +21,7 @@ module.exports = {
   ],
   rules: {
     'no-useless-constructor': 'off',
-    'no-use-before-define': 'off'
+    'no-use-before-define': 'off',
+    'no-case-declarations': 'off'
   }
 }
