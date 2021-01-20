@@ -1,10 +1,10 @@
 import { Types } from './todosActions'
 import { TodoModel } from '../models/TodoModel'
 
-type TState = {
+export type TTodoReducer = {
   todos: TodoModel[];
 };
-const INITIAL_STATE: TState = {
+const INITIAL_STATE: TTodoReducer = {
   todos: []
 }
 

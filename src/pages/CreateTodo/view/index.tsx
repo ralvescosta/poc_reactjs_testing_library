@@ -23,6 +23,7 @@ export const CreateTodoView = () => {
 
     try {
       const todo = TodoModel.create({ name: todoName, description: todoDescription, priority })
+
       dispatchActions(createTodoAction(todo))
       alert('Todo created')
 

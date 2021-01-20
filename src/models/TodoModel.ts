@@ -5,8 +5,13 @@ export class TodoModel {
     public readonly id: string,
     public readonly name: string,
     public readonly description: string,
-    public readonly priority: number
+    public readonly priority: number,
+    private _state: string
   ) {}
+
+  get state (): string {
+    return this._state
+  }
 
   public static create ({ name, description, priority }: {name: string, description: string, priority: string}): TodoModel {
     if (name.length < 4) {
@@ -32,6 +37,13 @@ export class TodoModel {
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
     )
 
-    return new TodoModel(uid, name, description, priorityToNumber)
+    return new TodoModel(uid, name, description, priorityToNumber, 'await')
+  }
+
+  public changeState ({ newState }: {newState: 'done' | 'await'}) {
+    if (newState !== 'done' && newState !== 'await') {
+      throw new ModelErrors('state', 'State must be a await or done')
+    }
+    this._state = newState
   }
 }

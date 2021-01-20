@@ -2,12 +2,13 @@ import React from 'react'
 import './styles.css'
 
 import { useSelector } from 'react-redux'
+import { TStore } from '../../../store/rootReducers'
 
 import { TodoItem } from '../../../components/TodoItem'
 import { TodoModel } from '../../../models/TodoModel'
 
 export const HomeView = () => {
-  const todos = useSelector((store: any) => store.todosStore.todos) as TodoModel[]
+  const todos = useSelector((store: TStore) => store.todosStore.todos.filter((todo: TodoModel) => todo.state === 'await'))
   return (
     <div className="todo-list-container">
       {
