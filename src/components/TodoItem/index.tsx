@@ -17,8 +17,8 @@ export const TodoItem = () => {
       </div>
       
       <div className="todo-item-buttons-content">
-        <button className="todo-item-button success">DELETE</button>
-        <button className="todo-item-button danger">DONE</button>
+        <button className="todo-item-button danger">DELETE</button>
+        <button className="todo-item-button success">DONE</button>
       </div>
     </div>
   )
