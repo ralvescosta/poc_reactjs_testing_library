@@ -14,7 +14,7 @@ export const DoneView = () => {
       {
         todos.length
           ? (
-              todos.map(todo => <TodoItem key={todo.id} todo={todo}/>)
+              todos.map(todo => <TodoItem key={todo.id} todo={todo} context="Done" />)
             )
           : null
       }

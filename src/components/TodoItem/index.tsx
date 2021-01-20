@@ -4,17 +4,26 @@ import './styles.css'
 
 import { useDispatch } from 'react-redux'
 
-import { markTodoAsDone } from '../../store/todosActions'
+import { markTodoAsDoneAction, markTodoAsAwaitAction, deleteTodoAction } from '../../store/todosActions'
 
 type Props = {
   todo: TodoModel
+  context: 'Home' | 'Done'
 }
 
-export const TodoItem = ({ todo }: Props) => {
+export const TodoItem = ({ todo, context }: Props) => {
   const dispatchActions = useDispatch()
 
   const done = () => {
-    dispatchActions(markTodoAsDone(todo.id))
+    dispatchActions(markTodoAsDoneAction(todo.id))
+  }
+
+  const rollBack = () => {
+    dispatchActions(markTodoAsAwaitAction(todo.id))
+  }
+
+  const deleteTodo = () => {
+    dispatchActions(deleteTodoAction(todo.id))
   }
 
   return (
@@ -32,8 +41,9 @@ export const TodoItem = ({ todo }: Props) => {
       </div>
 
       <div className="todo-item-buttons-content">
-        <button className="todo-item-button danger">DELETE</button>
-        <button className="todo-item-button success" onClick={done}>DONE</button>
+        {context === 'Home' ? <button className="todo-item-button success" onClick={done}>DONE</button> : null}
+        {context === 'Done' ? <button className="todo-item-button success" onClick={rollBack}>ROLL BACK</button> : null}
+        <button className="todo-item-button danger" onClick={deleteTodo}>DELETE</button>
       </div>
     </div>
   )
