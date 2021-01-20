@@ -1,9 +1,9 @@
 import React from 'react'
-import { IUseCreateTodo } from '../viewModel/createTodoViewModel'
+import { IUseCreateTodoViewModel } from '../viewModel/createTodoViewModel'
 import './styles.css'
 
 type Props = {
-  viewModel: IUseCreateTodo
+  viewModel: IUseCreateTodoViewModel
 }
 
 export const CreateTodoView = ({ viewModel }: Props) => {

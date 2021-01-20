@@ -3,19 +3,20 @@ import { useRef, FormEvent, RefObject } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { createTodoAction } from '../../../store/todosActions'
+import { ICreateTodoUsecase } from '../useCase/createTodoUsecase'
 
 type Props = {
-  createTodoUsecase: any
+  createTodoUsecase: ICreateTodoUsecase
 }
 
-export interface IUseCreateTodo {
+export interface IUseCreateTodoViewModel {
   todoNameInputRef: RefObject<HTMLInputElement>
-  todoDescriptionInputRef: RefObject<HTMLInputElement> 
-  priorityInputRef: RefObject<HTMLInputElement> 
+  todoDescriptionInputRef: RefObject<HTMLInputElement>
+  priorityInputRef: RefObject<HTMLInputElement>
   createATodo: (e: FormEvent) => void
 }
 
-export const useCreateTodo = ({ createTodoUsecase }: Props): IUseCreateTodo => {
+export const useCreateTodoViewModel = ({ createTodoUsecase }: Props): IUseCreateTodoViewModel => {
   const dispatchActions = useDispatch()
 
   const todoNameInputRef = useRef<HTMLInputElement>(null)

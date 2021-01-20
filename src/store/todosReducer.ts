@@ -21,18 +21,11 @@ export const todosReducer = (state = INITIAL_STATE, action: ActionType) => {
         todos: [...state.todos, action.payload]
       }
 
-    case Types.MARK_TODO_AS_DONE:
-      const todoIndex1 = state.todos.findIndex(todo => todo.id === action.payload)
-      if (todoIndex1 === -1) return state
+    case Types.SET_TODO:
+      const todoIndex = state.todos.findIndex(todo => todo.id === action.payload.todo.id)
+      if (todoIndex === -1) return state
+      state.todos[todoIndex] = action.payload.todo
 
-      state.todos[todoIndex1].changeState({ newState: 'done' })
-      return { ...state }
-
-    case Types.MARK_TODO_AS_AWAIT:
-      const todoIndex2 = state.todos.findIndex(todo => todo.id === action.payload)
-      if (todoIndex2 === -1) return state
-
-      state.todos[todoIndex2].changeState({ newState: 'await' })
       return { ...state }
 
     case Types.DELETE_TODO:

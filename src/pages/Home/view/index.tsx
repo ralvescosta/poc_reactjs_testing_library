@@ -1,20 +1,20 @@
 import React from 'react'
 import './styles.css'
 
-import { useSelector } from 'react-redux'
-import { TStore } from '../../../store/rootReducers'
-
 import { TodoItem } from '../../../components/TodoItem'
-import { TodoModel } from '../../../models/TodoModel'
+import { IUseHomeViewModel } from '../viewModel/homeViewModel'
 
-export const HomeView = () => {
-  const todos = useSelector((store: TStore) => store.todosStore.todos.filter((todo: TodoModel) => todo.state === 'await'))
+export type Props = {
+  viewModel: IUseHomeViewModel
+}
+
+export const HomeView = ({ viewModel }: Props) => {
   return (
     <div className="todo-list-container">
       {
-        todos.length
+        viewModel.todos.length
           ? (
-              todos.map(todo => <TodoItem key={todo.id} todo={todo} context="Home" />)
+              viewModel.todos.map(todo => <TodoItem key={todo.id} todo={todo} context="Home" doneButton={() => {}} deleteButton={() => {}}/>)
             )
           : null
       }
