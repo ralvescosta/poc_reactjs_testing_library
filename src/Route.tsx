@@ -4,9 +4,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Navigation } from './components/Navigation'
 
-import { CreateTodo } from './pages/CreateTodo'
-import { Home } from './pages/Home'
-import { Done } from './pages/Done'
+import { CreateTodoView } from './pages/CreateTodo'
+import { HomeView } from './pages/Home'
+import { DoneView } from './pages/Done'
 
 export const AppRoute = () => {
   return (
@@ -15,15 +15,15 @@ export const AppRoute = () => {
 
         <Switch>
           <Route path="/" exact>
-            <Home />
+            <HomeView />
           </Route>
 
           <Route path="/create">
-            <CreateTodo />
+            <CreateTodoView />
           </Route>
 
           <Route path="/done">
-            <Done />
+            <DoneView />
           </Route>
         </Switch>
     </BrowserRouter>
