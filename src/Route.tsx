@@ -1,13 +1,12 @@
-import React from "react";
+import React from 'react'
 
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import {Navigation} from './components/Navigation'
+import { Navigation } from './components/Navigation'
 
-import {CreateTodo} from './pages/CreateTodo'
-import {Home} from './pages/Home'
-import {DonePage} from './pages/Done'
-
+import { CreateTodo } from './pages/CreateTodo'
+import { Home } from './pages/Home'
+import { DonePage } from './pages/Done'
 
 export const AppRoute = () => {
   return (
@@ -28,5 +27,5 @@ export const AppRoute = () => {
           </Route>
         </Switch>
     </BrowserRouter>
-  );
+  )
 }

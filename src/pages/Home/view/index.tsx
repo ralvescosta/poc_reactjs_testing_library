@@ -1,18 +1,22 @@
 import React from 'react'
-import "./styles.css"
+import './styles.css'
 
-import {TodoItem} from '../../../components/TodoItem'
+import { useSelector } from 'react-redux'
+
+import { TodoItem } from '../../../components/TodoItem'
+import { TodoModel } from '../../../models/TodoModel'
 
 export const HomeView = () => {
+  const todos = useSelector((store: any) => store.todosStore.todos) as TodoModel[]
   return (
     <div className="todo-list-container">
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-
+      {
+        todos.length
+          ? (
+              todos.map(todo => <TodoItem key={todo.todoName}/>)
+            )
+          : null
+      }
     </div>
   )
 }
