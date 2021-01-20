@@ -10,25 +10,25 @@ import { createTodoAction } from '../../../store/todosActions'
 export const CreateTodoView = () => {
   const dispatchActions = useDispatch()
 
-  const todoNameRef = useRef<HTMLInputElement>(null)
-  const todoDescriptionRef = useRef<HTMLInputElement>(null)
-  const priorityRef = useRef<HTMLInputElement>(null)
+  const todoNameInputRef = useRef<HTMLInputElement>(null)
+  const todoDescriptionInputRef = useRef<HTMLInputElement>(null)
+  const priorityInputRef = useRef<HTMLInputElement>(null)
 
   const createATodo = (e: FormEvent) => {
     e.preventDefault()
 
-    const todoName = todoNameRef.current?.value as string
-    const todoDescription = todoDescriptionRef.current?.value as string
-    const priority = priorityRef.current?.value as string
+    const todoName = todoNameInputRef.current?.value as string
+    const todoDescription = todoDescriptionInputRef.current?.value as string
+    const priority = priorityInputRef.current?.value as string
 
     try {
       const todo = TodoModel.create({ name: todoName, description: todoDescription, priority })
       dispatchActions(createTodoAction(todo))
       alert('Todo created')
 
-      if (todoNameRef.current?.value) todoNameRef.current.value = ''
-      if (todoDescriptionRef.current?.value) todoDescriptionRef.current.value = ''
-      if (priorityRef.current?.value) priorityRef.current.value = ''
+      if (todoNameInputRef.current?.value) todoNameInputRef.current.value = ''
+      if (todoDescriptionInputRef.current?.value) todoDescriptionInputRef.current.value = ''
+      if (priorityInputRef.current?.value) priorityInputRef.current.value = ''
     } catch (err) {
       alert(err.message)
     }
@@ -38,13 +38,13 @@ export const CreateTodoView = () => {
     <div className="create-todo-container">
       <form className="create-todo-form" onSubmit={createATodo}>
         <label className="create-todo-label">Todo Name</label>
-        <input className="create-todo-input" ref={todoNameRef}/>
+        <input className="create-todo-input" ref={todoNameInputRef}/>
 
         <label className="create-todo-label">Todo Description</label>
-        <input className="create-todo-input" ref={todoDescriptionRef}/>
+        <input className="create-todo-input" ref={todoDescriptionInputRef}/>
 
         <label className="create-todo-label">Priority</label>
-        <input className="create-todo-input" ref={priorityRef}/>
+        <input className="create-todo-input" ref={priorityInputRef}/>
 
         <button className="create-todo-button">Add</button>
       </form>
