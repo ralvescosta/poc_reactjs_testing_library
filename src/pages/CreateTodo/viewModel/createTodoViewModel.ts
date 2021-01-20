@@ -1,4 +1,4 @@
-import { useRef, FormEvent } from 'react'
+import { useRef, FormEvent, RefObject } from 'react'
 
 import { useDispatch } from 'react-redux'
 
@@ -8,14 +8,21 @@ type Props = {
   createTodoUsecase: any
 }
 
-export const useCreateTodo = ({ createTodoUsecase }: Props) => {
+export interface IUseCreateTodo {
+  todoNameInputRef: RefObject<HTMLInputElement>
+  todoDescriptionInputRef: RefObject<HTMLInputElement> 
+  priorityInputRef: RefObject<HTMLInputElement> 
+  createATodo: (e: FormEvent) => void
+}
+
+export const useCreateTodo = ({ createTodoUsecase }: Props): IUseCreateTodo => {
   const dispatchActions = useDispatch()
 
   const todoNameInputRef = useRef<HTMLInputElement>(null)
   const todoDescriptionInputRef = useRef<HTMLInputElement>(null)
   const priorityInputRef = useRef<HTMLInputElement>(null)
 
-  const createATodo = (e: FormEvent) => {
+  const createATodo = (e: FormEvent): void => {
     e.preventDefault()
 
     const todoName = todoNameInputRef.current?.value as string
