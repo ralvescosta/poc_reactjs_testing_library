@@ -1,4 +1,4 @@
-import { useRef, FormEvent, RefObject } from 'react'
+import { useRef, FormEvent, RefObject, useState } from 'react'
 
 import { useDispatch } from 'react-redux'
 
@@ -13,7 +13,8 @@ export interface IUseCreateTodoViewModel {
   todoNameInputRef: RefObject<HTMLInputElement>
   todoDescriptionInputRef: RefObject<HTMLInputElement>
   priorityInputRef: RefObject<HTMLInputElement>
-  createATodo: (e: FormEvent) => void
+  createATodo: (e: FormEvent) => void,
+  alert:{message:string, status:boolean}
 }
 
 export const useCreateTodoViewModel = ({ createTodoUsecase }: Props): IUseCreateTodoViewModel => {
@@ -23,6 +24,7 @@ export const useCreateTodoViewModel = ({ createTodoUsecase }: Props): IUseCreate
   const todoDescriptionInputRef = useRef<HTMLInputElement>(null)
   const priorityInputRef = useRef<HTMLInputElement>(null)
 
+  const [alert, setAlert] = useState({ message: '', status: false })
   const createATodo = (e: FormEvent): void => {
     e.preventDefault()
 
@@ -30,21 +32,24 @@ export const useCreateTodoViewModel = ({ createTodoUsecase }: Props): IUseCreate
     const todoDescription = todoDescriptionInputRef.current?.value as string
     const priority = priorityInputRef.current?.value as string
 
-    const result = createTodoUsecase.createANewTodo({ todoName, todoDescription, priority })
+    try {
+      const result = createTodoUsecase.createANewTodo({ todoName, todoDescription, priority })
+      if (typeof result === 'string') {
+        setAlert({ message: result, status: true })
+      }
+      dispatchActions(createTodoAction(result))
 
-    if (typeof result === 'string') {
-      return alert(result)
+      if (todoNameInputRef.current?.value)todoNameInputRef.current.value = ''
+      if (todoDescriptionInputRef.current?.value) todoDescriptionInputRef.current.value = ''
+      if (priorityInputRef.current?.value) priorityInputRef.current.value = ''
+
+      return setAlert({ message: 'Todo Created', status: true })
+    } catch (e) {
+      return setAlert({ message: e, status: true })
     }
-    dispatchActions(createTodoAction(result))
-
-    if (todoNameInputRef.current?.value)todoNameInputRef.current.value = ''
-    if (todoDescriptionInputRef.current?.value) todoDescriptionInputRef.current.value = ''
-    if (priorityInputRef.current?.value) priorityInputRef.current.value = ''
-
-    return alert('Todo Created')
   }
 
   return {
-    todoNameInputRef, todoDescriptionInputRef, priorityInputRef, createATodo
+    todoNameInputRef, todoDescriptionInputRef, priorityInputRef, createATodo, alert
   }
 }
