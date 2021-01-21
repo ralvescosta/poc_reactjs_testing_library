@@ -14,7 +14,7 @@ export interface IUseCreateTodoViewModel {
   todoDescriptionInputRef: RefObject<HTMLInputElement>
   priorityInputRef: RefObject<HTMLInputElement>
   createATodo: (e: FormEvent) => void,
-  alert:{message:string, status:boolean}
+  alert: {message:string, status:boolean}
 }
 
 export const useCreateTodoViewModel = ({ createTodoUsecase }: Props): IUseCreateTodoViewModel => {
@@ -34,9 +34,7 @@ export const useCreateTodoViewModel = ({ createTodoUsecase }: Props): IUseCreate
 
     try {
       const result = createTodoUsecase.createANewTodo({ todoName, todoDescription, priority })
-      if (typeof result === 'string') {
-        setAlert({ message: result, status: true })
-      }
+
       dispatchActions(createTodoAction(result))
 
       if (todoNameInputRef.current?.value)todoNameInputRef.current.value = ''
@@ -45,7 +43,7 @@ export const useCreateTodoViewModel = ({ createTodoUsecase }: Props): IUseCreate
 
       return setAlert({ message: 'Todo Created', status: true })
     } catch (e) {
-      return setAlert({ message: e, status: true })
+      return setAlert({ message: e.message, status: true })
     }
   }
 
