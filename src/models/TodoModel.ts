@@ -14,9 +14,11 @@ export class TodoModel {
   }
 
   public static create ({ name, description, priority }: {name: string, description: string, priority: string}): TodoModel {
-    if (name.length < 4) {
-      throw new ModelErrors('name', 'name must have at least 4 character')
+    if (name.length >= 10) {
+      console.log(name.length)
+      throw new ModelErrors('name', 'name must have at least 10 character')
     }
+
     if (name.length >= 20) {
       throw new ModelErrors('name', 'name must have at maximum 20 character')
     }
@@ -34,9 +36,7 @@ export class TodoModel {
     }
 
     // StackOverflow na Veia
-    const uid = (`${1e7 + -1e3 + -4e3 + -8e3 + -1e11}`).replace(/[018]/g, (c: any) =>
-      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    )
+    const uid = Math.floor(Math.random() * 99999999999).toString()
 
     return new TodoModel(uid, name, description, priorityToNumber, 'await')
   }
