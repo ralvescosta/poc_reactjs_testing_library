@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { TodoItem } from './index'
 import { TodoModel } from '../../models/TodoModel'
@@ -8,7 +8,7 @@ describe('Teste componente TodoItem', () => {
   const contextHome = 'Home'
   const contextDone = 'Done'
 
-  const todoFake:TodoModel = TodoModel.create({ name: 'Todo-1', description: 'Todo de Teste', priority: '5' })
+  const todoFake:TodoModel = TodoModel.create({ name: 'TodoTeste', description: 'Todo de Teste', priority: '5' })
   const doneButtonMock = jest.fn()
   const deleteButtonMock = jest.fn()
   const rollButtonMock = jest.fn()

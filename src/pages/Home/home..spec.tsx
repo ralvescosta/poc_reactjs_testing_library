@@ -8,9 +8,9 @@ import { fireEvent } from '@testing-library/react'
 import { RootReducer } from '../../store/rootReducers'
 
 describe('Teste da pagina Home', () => {
-  const todo1 = TodoModel.create({ name: 'todo1', description: 'descrição todo 01', priority: '1' })
-  const todo2 = TodoModel.create({ name: 'todo2', description: 'descrição todo 02', priority: '5' })
-  const todo3 = TodoModel.create({ name: 'todo3', description: 'descrição todo 03', priority: '10' })
+  const todo1 = TodoModel.create({ name: 'todoTeste1', description: 'descrição todo 01', priority: '1' })
+  const todo2 = TodoModel.create({ name: 'todoTeste2', description: 'descrição todo 02', priority: '5' })
+  const todo3 = TodoModel.create({ name: 'todoTeste3', description: 'descrição todo 03', priority: '10' })
 
   const mockInitialState:any = {
     todosStore: {

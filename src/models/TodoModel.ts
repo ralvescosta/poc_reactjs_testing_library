@@ -14,8 +14,8 @@ export class TodoModel {
   }
 
   public static create ({ name, description, priority }: {name: string, description: string, priority: string}): TodoModel {
-    if (name.length >= 10) {
-      throw new ModelErrors('name', 'name must have at least 10 character')
+    if (name.length <= 5) {
+      throw new ModelErrors('name', 'name must have at least 5 character')
     }
 
     if (name.length >= 20) {
@@ -31,6 +31,9 @@ export class TodoModel {
       throw new ModelErrors('priority', 'Priority must have a number')
     }
     if (priorityToNumber > 10) {
+      throw new ModelErrors('priority', 'Priority must have least then 10')
+    }
+    if (priorityToNumber <= 0) {
       throw new ModelErrors('priority', 'Priority must have least then 10')
     }
 
