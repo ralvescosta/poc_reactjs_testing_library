@@ -3,6 +3,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { TodoItem } from './index'
 import { TodoModel } from '../../models/TodoModel'
+
 describe('Teste componente TodoItem', () => {
   const contextHome = 'Home'
   const contextDone = 'Done'
@@ -12,11 +13,16 @@ describe('Teste componente TodoItem', () => {
   const deleteButtonMock = jest.fn()
   const rollButtonMock = jest.fn()
 
+  const makeSut = (contextHome:any) => {
+    const sut = render(<TodoItem context={contextHome}
+      doneButton={doneButtonMock} deleteButton={deleteButtonMock}
+       rollBackButton={rollButtonMock} todo={todoFake}/>)
+
+    return sut
+  }
   describe('Testes de Renderização ', () => {
     it('Renderização Home ', () => {
-      const { queryByTestId } = render(<TodoItem context={contextHome}
-         doneButton={doneButtonMock} deleteButton={deleteButtonMock}
-          rollBackButton={rollButtonMock} todo={todoFake}/>)
+      const { queryByTestId } = makeSut(contextHome)
 
       const prioridade = queryByTestId('priority')
       const nome = queryByTestId('name')
@@ -34,9 +40,7 @@ describe('Teste componente TodoItem', () => {
     })
 
     it('Renderização Done ', () => {
-      const { queryByTestId } = render(<TodoItem context={contextDone}
-        doneButton={doneButtonMock} deleteButton={deleteButtonMock}
-        rollBackButton={rollButtonMock} todo={todoFake}/>)
+      const { queryByTestId } = makeSut(contextDone)
 
       const prioridade = queryByTestId('priority')
       const nome = queryByTestId('name')
@@ -54,9 +58,7 @@ describe('Teste componente TodoItem', () => {
     })
 
     it('Testando se o componente renderizou os valores passados para ele', () => {
-      const { getByTestId } = render(<TodoItem context={contextDone}
-        doneButton={doneButtonMock} deleteButton={deleteButtonMock}
-        rollBackButton={rollButtonMock} todo={todoFake}/>)
+      const { getByTestId } = makeSut(contextDone)
 
       const prioridade = getByTestId('priority')
       const nome = getByTestId('name')
@@ -69,9 +71,7 @@ describe('Teste componente TodoItem', () => {
 
     describe('Teste de funcionalidade de botões Pagina Done', () => {
       it('teste chamada do botao deletar', () => {
-        const { getByTestId } = render(<TodoItem context={contextDone}
-        doneButton={doneButtonMock} deleteButton={deleteButtonMock}
-        rollBackButton={rollButtonMock} todo={todoFake}/>)
+        const { getByTestId } = makeSut(contextDone)
 
         const deleteButton = getByTestId('button-delete')
         fireEvent.click(deleteButton)
@@ -79,9 +79,7 @@ describe('Teste componente TodoItem', () => {
         expect(deleteButtonMock).toHaveBeenCalledTimes(1)
       })
       it('teste chamada do botao deletar', () => {
-        const { getByTestId } = render(<TodoItem context={contextDone}
-        doneButton={doneButtonMock} deleteButton={deleteButtonMock}
-        rollBackButton={rollButtonMock} todo={todoFake}/>)
+        const { getByTestId } = makeSut(contextDone)
 
         const rollButton = getByTestId('button-roll')
         fireEvent.click(rollButton)
@@ -92,9 +90,7 @@ describe('Teste componente TodoItem', () => {
 
     describe('Teste de funcionalidade de botões Pagina Home', () => {
       it('teste chamada do botao deletar', () => {
-        const { getByTestId } = render(<TodoItem context={contextHome}
-        doneButton={doneButtonMock} deleteButton={deleteButtonMock}
-        rollBackButton={rollButtonMock} todo={todoFake}/>)
+        const { getByTestId } = makeSut(contextHome)
 
         const deleteButton = getByTestId('button-delete')
         fireEvent.click(deleteButton)
@@ -102,9 +98,7 @@ describe('Teste componente TodoItem', () => {
         expect(deleteButtonMock).toHaveBeenCalledTimes(1)
       })
       it('teste chamada do botao Done', () => {
-        const { getByTestId } = render(<TodoItem context={contextHome}
-        doneButton={doneButtonMock} deleteButton={deleteButtonMock}
-        rollBackButton={rollButtonMock} todo={todoFake}/>)
+        const { getByTestId } = makeSut(contextHome)
 
         const doneButton = getByTestId('button-done')
         fireEvent.click(doneButton)

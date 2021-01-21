@@ -10,12 +10,14 @@ function renderWithRedux (
   reducer:any,
   initialState:any
 ) {
-  const Wrapper = () => {
+  const Wrapper = ({ children }:any) => {
     const fakeStore = createStore(reducer, initialState)
 
-    return <Provider store={fakeStore}>{Element}</Provider>
+    return <Provider store={fakeStore}>{children}</Provider>
   }
-  return render(<Wrapper/>)
+  return render(Element, {
+    wrapper: Wrapper
+  })
 }
 
 export { renderWithRedux }

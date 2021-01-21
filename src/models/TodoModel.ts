@@ -15,7 +15,6 @@ export class TodoModel {
 
   public static create ({ name, description, priority }: {name: string, description: string, priority: string}): TodoModel {
     if (name.length >= 10) {
-      console.log(name.length)
       throw new ModelErrors('name', 'name must have at least 10 character')
     }
 
