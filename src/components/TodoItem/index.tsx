@@ -2,30 +2,15 @@ import React from 'react'
 import { TodoModel } from '../../models/TodoModel'
 import './styles.css'
 
-import { useDispatch } from 'react-redux'
-
-import { markTodoAsDoneAction, markTodoAsAwaitAction, deleteTodoAction } from '../../store/todosActions'
-
 type Props = {
   todo: TodoModel
   context: 'Home' | 'Done'
+  doneButton?: any
+  deleteButton: any
+  rollBackButton?: any
 }
 
-export const TodoItem = ({ todo, context }: Props) => {
-  const dispatchActions = useDispatch()
-
-  const done = () => {
-    dispatchActions(markTodoAsDoneAction(todo.id))
-  }
-
-  const rollBack = () => {
-    dispatchActions(markTodoAsAwaitAction(todo.id))
-  }
-
-  const deleteTodo = () => {
-    dispatchActions(deleteTodoAction(todo.id))
-  }
-
+export const TodoItem = ({ todo, context, doneButton, deleteButton, rollBackButton }: Props) => {
   return (
     <div className="todo-item-container">
       <span className="todo-item-priority">Priority: {todo.priority}</span>
@@ -41,9 +26,9 @@ export const TodoItem = ({ todo, context }: Props) => {
       </div>
 
       <div className="todo-item-buttons-content">
-        {context === 'Home' ? <button className="todo-item-button success" onClick={done}>DONE</button> : null}
-        {context === 'Done' ? <button className="todo-item-button success" onClick={rollBack}>ROLL BACK</button> : null}
-        <button className="todo-item-button danger" onClick={deleteTodo}>DELETE</button>
+        {context === 'Home' ? <button className="todo-item-button success" onClick={doneButton}>DONE</button> : null}
+        {context === 'Done' ? <button className="todo-item-button success" onClick={rollBackButton}>ROLL BACK</button> : null}
+        <button className="todo-item-button danger" onClick={deleteButton}>DELETE</button>
       </div>
     </div>
   )
