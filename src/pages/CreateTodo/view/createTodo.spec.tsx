@@ -34,7 +34,7 @@ describe('Testes componente CreateTodo', () => {
     })
   })
   describe('Teste de validações', () => {
-    it('testar validacao input Name maior que 10 caracteres', () => {
+    it('testar validacao input Name maior que 10 caracteress', () => {
       // Arange
       const { getByTestId, queryByText } = renderWithRedux(<CreateTodo />, todosReducer, initial)
 
