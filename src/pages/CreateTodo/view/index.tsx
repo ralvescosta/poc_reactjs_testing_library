@@ -24,8 +24,9 @@ export const CreateTodoView = ({ viewModel }: Props) => {
      {
        viewModel.alert.status
          ? (<div className="alert">
-{viewModel.alert.message}
-       </div>)
+              {viewModel.alert.message}
+            </div>
+           )
          : null
      }
     </div>

@@ -10,7 +10,7 @@ export class CreateTodoUsecase implements ICreateTodoUsecase {
       const todo = TodoModel.create({ name: todoName, description: todoDescription, priority })
       return todo
     } catch (err) {
-      return err.message
+      throw new Error(err.message)
     }
   }
 }
