@@ -5,14 +5,14 @@ import { Home } from './index'
 import { TodoModel } from '../../models/TodoModel'
 
 import { fireEvent } from '@testing-library/react'
-import { RootReducer } from '../../store/rootReducers'
+import { RootReducer, TStore } from '../../store/rootReducers'
 
 describe('Teste da pagina Home', () => {
   const todo1 = TodoModel.create({ name: 'todoTeste1', description: 'descrição todo 01', priority: '1' })
   const todo2 = TodoModel.create({ name: 'todoTeste2', description: 'descrição todo 02', priority: '5' })
   const todo3 = TodoModel.create({ name: 'todoTeste3', description: 'descrição todo 03', priority: '10' })
 
-  const mockInitialState:any = {
+  const mockInitialState:TStore = {
     todosStore: {
       todos: [
         todo1, todo2, todo3
