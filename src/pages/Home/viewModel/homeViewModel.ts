@@ -19,6 +19,7 @@ export interface IUseHomeViewModel {
 
 export const useHomeViewModel = ({ homeUsecase }: Props): IUseHomeViewModel => {
   const dispatchActions = useDispatch()
+
   const todos = useSelector((store: TStore) => store.todosStore.todos.filter((todo: TodoModel) => todo.state === 'await'))
 
   const markTodoAsDone = (todo: TodoModel) => {

@@ -13,22 +13,22 @@ type Props = {
 export const TodoItem = ({ todo, context, doneButton, deleteButton, rollBackButton }: Props) => {
   return (
     <div className="todo-item-container">
-      <span className="todo-item-priority">Priority: {todo.priority}</span>
+      <span className="todo-item-priority" data-testid='priority'>Priority: {todo.priority}</span>
 
       <div className="todo-item-text-content">
         <strong className="todo-item-title">Name: </strong>
-        <span className="todo-item-description">{todo.name}</span>
+        <span className="todo-item-description" data-testid='name'>{todo.name}</span>
       </div>
 
       <div className="todo-item-text-content">
         <strong className="todo-item-title">Description: </strong>
-        <span className="todo-item-description">{todo.description}</span>
+        <span className="todo-item-description"data-testid='description'>{todo.description}</span>
       </div>
 
       <div className="todo-item-buttons-content">
-        {context === 'Home' ? <button className="todo-item-button success" onClick={doneButton}>DONE</button> : null}
-        {context === 'Done' ? <button className="todo-item-button success" onClick={rollBackButton}>ROLL BACK</button> : null}
-        <button className="todo-item-button danger" onClick={deleteButton}>DELETE</button>
+        {context === 'Home' ? <button data-testid='button-done' className="todo-item-button success" onClick={doneButton}>DONE</button> : null}
+        {context === 'Done' ? <button data-testid='button-roll' className="todo-item-button success" onClick={rollBackButton}>ROLL BACK</button> : null}
+        <button className="todo-item-button danger" data-testid='button-delete' onClick={deleteButton}>DELETE</button>
       </div>
     </div>
   )

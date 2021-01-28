@@ -21,7 +21,7 @@ describe('Testes componente CreateTodo', () => {
       const inputDescription:any = queryByTestId('description')
       const inputPriority:any = queryByTestId('priority')
 
-      fireEvent.change(inputName, { target: { value: 'Todo' } })
+      fireEvent.change(inputName, { target: { value: 'TodoTeste' } })
       fireEvent.change(inputDescription, { target: { value: 'descrição' } })
       fireEvent.change(inputPriority, { target: { value: 5 } })
 
@@ -34,16 +34,16 @@ describe('Testes componente CreateTodo', () => {
     })
   })
   describe('Teste de validações', () => {
-    it('testar validacao input Name maior que 10 caracteres', () => {
+    it('testar validacao input Name maior que 20 caracteress', () => {
       // Arange
       const { getByTestId, queryByText } = renderWithRedux(<CreateTodo />, todosReducer, initial)
 
       // Act
-      fireEvent.change(getByTestId('name'), { target: { value: 'Todo teste maior que 10 caracteres' } })
+      fireEvent.change(getByTestId('name'), { target: { value: 'Teste com mais de 20 caracteres para zuar o código' } })
       fireEvent.click(getByTestId('button'))
 
       // Assert
-      expect(queryByText('name must have at least 10 character')).toBeTruthy()
+      expect(queryByText('name must have at maximum 20 character')).toBeTruthy()
     })
 
     it('testar validacao input Description menor que 6 caracteres', () => {
@@ -51,6 +51,7 @@ describe('Testes componente CreateTodo', () => {
       const { getByTestId, queryByText } = renderWithRedux(<CreateTodo />, todosReducer, initial)
 
       // Act
+      fireEvent.change(getByTestId('name'), { target: { value: 'TesteTodo' } })
       fireEvent.change(getByTestId('description'), { target: { value: '123' } })
       fireEvent.click(getByTestId('button'))
 
@@ -62,11 +63,13 @@ describe('Testes componente CreateTodo', () => {
       const { getByTestId, queryByText } = renderWithRedux(<CreateTodo />, todosReducer, initial)
 
       // Act
-      fireEvent.change(getByTestId('description'), { target: { value: '11' } })
+      fireEvent.change(getByTestId('name'), { target: { value: 'TesteTodo' } })
+      fireEvent.change(getByTestId('description'), { target: { value: '123465' } })
+      fireEvent.change(getByTestId('priority'), { target: { value: '11' } })
       fireEvent.click(getByTestId('button'))
 
       // Assert
-      expect(queryByText('description must have at least 6 character')).toBeTruthy()
+      expect(queryByText('Priority must have least then 10')).toBeTruthy()
     })
 
     it('testar validacao input Prioridade é um numero', () => {
@@ -74,7 +77,9 @@ describe('Testes componente CreateTodo', () => {
       const { getByTestId, queryByText } = renderWithRedux(<CreateTodo />, todosReducer, initial)
 
       // Act
-      fireEvent.change(getByTestId('description'), { target: { value: 'palavra' } })
+      fireEvent.change(getByTestId('name'), { target: { value: 'TesteTodo' } })
+      fireEvent.change(getByTestId('description'), { target: { value: '123465' } })
+      fireEvent.change(getByTestId('priority'), { target: { value: 'palavra' } })
       fireEvent.click(getByTestId('button'))
 
       // Assert
