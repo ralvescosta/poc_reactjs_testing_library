@@ -4,9 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Navigation } from './components/Navigation'
 
-import { CreateTodo } from './pages/CreateTodo'
-import { Home } from './pages/Home'
-import { Done } from './pages/Done'
+import { SearchRepository } from './pages/SearchRepository'
 
 export const AppRoute = () => {
   return (
@@ -14,17 +12,11 @@ export const AppRoute = () => {
         <Navigation />
 
         <Switch>
-          <Route path="/" exact>
-            <Home />
+
+          <Route path="/">
+            <SearchRepository />
           </Route>
 
-          <Route path="/create">
-            <CreateTodo />
-          </Route>
-
-          <Route path="/done">
-            <Done />
-          </Route>
         </Switch>
     </BrowserRouter>
   )

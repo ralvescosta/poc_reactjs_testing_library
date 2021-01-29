@@ -12,11 +12,7 @@ export const Navigation = () => {
         </li>
 
         <li>
-          <Link to="/create">Create</Link>
-        </li>
-
-        <li>
-          <Link to="/done">Done</Link>
+          <Link to="/repository-list">Repositories</Link>
         </li>
       </ul>
     </nav>
