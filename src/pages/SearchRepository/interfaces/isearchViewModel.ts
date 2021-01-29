@@ -1,1 +1,6 @@
-export interface ISearchViewModel {}
+import { RefObject } from 'react'
+
+export interface ISearchViewModel {
+  searchInputRef: RefObject<HTMLInputElement>
+  search: () => void
+}
