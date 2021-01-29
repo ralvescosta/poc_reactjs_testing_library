@@ -1,7 +1,8 @@
 import { RepositoryModel } from '../models/repositoryModel'
 import { ResultGithubSearchDto } from '../models/resultGithubSearchDto'
+import { ISearchGithubApiRepository } from '../pages/SearchRepository/interfaces/isearchGithubApiRepository'
 
-export class GithubApiRepository {
+export class GithubApiRepository implements ISearchGithubApiRepository {
   private readonly _githubSearchRepoBaseUrl = 'https://api.github.com/search/repositories?q=';
 
   public async search (repository: string): Promise<RepositoryModel[]> {

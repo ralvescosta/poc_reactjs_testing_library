@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Navigation } from './components/Navigation'
 
-import { CreateTodo } from './pages/CreateTodo'
+import { SearchRepository } from './pages/SearchRepository'
 
 export const AppRoute = () => {
   return (
@@ -13,8 +13,8 @@ export const AppRoute = () => {
 
         <Switch>
 
-          <Route path="/create">
-            <CreateTodo />
+          <Route path="/">
+            <SearchRepository />
           </Route>
 
         </Switch>
