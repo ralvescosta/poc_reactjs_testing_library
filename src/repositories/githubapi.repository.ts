@@ -5,7 +5,7 @@ import { ISearchGithubApiRepository } from '../pages/SearchRepository/interfaces
 export class GithubApiRepository implements ISearchGithubApiRepository {
   private readonly _githubSearchRepoBaseUrl = 'https://api.github.com/search/repositories?q=';
 
-  public async search (repository: string): Promise<RepositoryModel[]> {
+  public async searchRepository (repository: string): Promise<RepositoryModel[]> {
     let httpBody: ResultGithubSearchDto
     try {
       const httpResponse = await fetch(`${this._githubSearchRepoBaseUrl}${repository}`)
