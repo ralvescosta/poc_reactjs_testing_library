@@ -1,0 +1,43 @@
+.repository-item-container{
+  width: 99%;
+  /* height: 100px; */
+  border: solid 1px rgb(7, 7, 7);
+  border-radius: 6px;
+  margin-bottom: 10px;
+  
+  padding: 5px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.repository-item-container:nth-last-child(){
+  margin-bottom: 0;
+}
+
+.repository-item-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  
+}
+
+.repository-item-content{
+  width: 60%;
+  height: 150px;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+}
+
+.repository-item-content p {
+  max-height: 100px;
+}
+
+.repository-item-content-indicators{
+  display: flex;
+  justify-content: space-between;
+}

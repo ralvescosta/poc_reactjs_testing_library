@@ -19,7 +19,7 @@ describe('GithubApiRepository', () => {
     const { sut } = makeSut()
     fetch.mockResponseOnce(JSON.stringify(MockResultGithubRepositorySearch))
 
-    await sut.search('something')
+    await sut.searchRepository('something')
 
     expect(fetch).toHaveBeenCalledTimes(1)
   })
