@@ -32,6 +32,7 @@
 }
 
 .search-view-repository-container {
+  padding: 0;
   max-height: 750px;
   height: 100%;
   width: 70%;
