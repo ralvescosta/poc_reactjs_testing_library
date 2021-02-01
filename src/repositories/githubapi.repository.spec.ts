@@ -15,6 +15,7 @@ describe('GithubApiRepository', () => {
     fetch.resetMocks()
     jest.clearAllMocks()
   })
+
   it('search()', async () => {
     const { sut } = makeSut()
     fetch.mockResponseOnce(JSON.stringify(MockResultGithubRepositorySearch))

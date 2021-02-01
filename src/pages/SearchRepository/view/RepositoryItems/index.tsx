@@ -1,38 +1,39 @@
 import React from 'react'
-import { RepositoryModel } from '../../../../models/repositoryModel'
 
 import './styles.css'
 
 type Props = {
-  repository: RepositoryModel
+  viewModel: any
 }
 
-export const RepositoryItem = ({ repository }: Props) => {
+export const RepositoryItem = ({ viewModel }: Props) => {
   return (
     <li className="repository-item-container">
-      <img className="repository-item-avatar" src={repository.ownerAvatarUrl} />
-
+      <img className="repository-item-avatar" src={viewModel.repository.ownerAvatarUrl} />
+      {console.log(viewModel)}
       <div className="repository-item-content">
-        <strong>{repository.fullName}</strong>
+        <strong>{viewModel.repository.fullName}</strong>
 
         <div className="repository-item-content-p-overflow">
-          <p>{repository.description}</p>
+          <p>{viewModel.repository.description}</p>
         </div>
 
         <div className="repository-item-content-indicators">
 
           <div>
-            <strong>STARS: </strong><span>{repository.stargazersCount}</span>
+            <strong>STARS: </strong><span>{viewModel.repository.stargazersCount}</span>
           </div>
           <div>
-            <strong>FORKS: </strong><span>{repository.forks}</span>
+            <strong>FORKS: </strong><span>{viewModel.repository.forks}</span>
           </div>
           <div>
-            <strong>ISSUES: </strong><span>{repository.openIssues}</span>
+            <strong>ISSUES: </strong><span>{viewModel.repository.openIssues}</span>
           </div>
 
         </div>
       </div>
+
+      <button className="repository-item-like-button" onClick={viewModel.openModal}>LIKE</button>
     </li>
   )
 }

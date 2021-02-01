@@ -41,3 +41,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+.repository-item-like-button{
+  width: 10%;
+  height: 40px;
+  border-radius: 6px;
+  border: none;
+  background-color: forestgreen;
+  cursor: pointer;
+  color: #fff;
+}
+
+.repository-item-like-button:hover{
+  background-color: rgb(37, 102, 37);
+}
