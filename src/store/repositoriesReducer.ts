@@ -1,10 +1,10 @@
 import { Types } from './repositoriesActions'
 import { RepositoryModel } from '../models/repositoryModel'
 
-export type TTodoReducer = {
+export type TRepositoriesReducer = {
   repositories: RepositoryModel[];
 };
-const INITIAL_STATE: TTodoReducer = {
+const INITIAL_STATE: TRepositoriesReducer = {
   repositories: []
 }
 

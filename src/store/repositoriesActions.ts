@@ -1,8 +1,8 @@
 import { RepositoryModel } from '../models/repositoryModel'
 
 export const Types = {
-  ADD_REPOSITORY: '@repository/ADD_REPOSITORY',
-  DELETE_REPOSITORY: '@repository/DELETE_REPOSITORY'
+  ADD_REPOSITORY: '@repositories/ADD_REPOSITORY',
+  DELETE_REPOSITORY: '@repositories/DELETE_REPOSITORY'
 }
 
 export const createRepositoryAction = (repository: RepositoryModel) => ({
