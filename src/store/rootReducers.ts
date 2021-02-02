@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
-import { todosReducer, TTodoReducer } from './todosReducer'
+import { repositoriesReducer, TRepositoriesReducer } from './repositoriesReducer'
 
-export type TStore = {
-  todosStore: TTodoReducer
+export type TRootReducer = {
+  repositoriesStore: TRepositoriesReducer
 }
 
 export const RootReducer = combineReducers({
-  todosStore: todosReducer
+  repositoriesReducer: repositoriesReducer
 })

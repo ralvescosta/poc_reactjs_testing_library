@@ -4,9 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Navigation } from './components/Navigation'
 
-import { CreateTodo } from './pages/CreateTodo'
-import { Home } from './pages/Home'
-import { Done } from './pages/Done'
+import { SearchRepository } from './pages/SearchRepository'
+import { RepositoriesLiked } from './pages/RepositoriesLiked'
 
 export const AppRoute = () => {
   return (
@@ -14,16 +13,13 @@ export const AppRoute = () => {
         <Navigation />
 
         <Switch>
+
           <Route path="/" exact>
-            <Home />
+            <RepositoriesLiked />
           </Route>
 
-          <Route path="/create">
-            <CreateTodo />
-          </Route>
-
-          <Route path="/done">
-            <Done />
+          <Route path="/search">
+            <SearchRepository />
           </Route>
         </Switch>
     </BrowserRouter>

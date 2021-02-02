@@ -8,15 +8,11 @@ export const Navigation = () => {
     <nav className="navigation">
       <ul className="navigate-list">
         <li>
-          <Link to="/">Home</Link>
+          <Link className="text-with" to="/">Home</Link>
         </li>
 
         <li>
-          <Link to="/create">Create</Link>
-        </li>
-
-        <li>
-          <Link to="/done">Done</Link>
+          <Link className="text-with" to="/search">Search Repositories</Link>
         </li>
       </ul>
     </nav>

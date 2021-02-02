@@ -1,7 +1,9 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    jest: true
+
   },
   extends: [
     'plugin:react/recommended',
@@ -22,6 +24,7 @@ module.exports = {
   rules: {
     'no-useless-constructor': 'off',
     'no-use-before-define': 'off',
-    'no-case-declarations': 'off'
+    'no-case-declarations': 'off',
+    camelcase: 'off'
   }
 }
