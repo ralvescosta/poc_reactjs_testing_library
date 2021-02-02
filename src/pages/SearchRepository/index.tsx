@@ -1,15 +1,16 @@
 import React from 'react'
-import { SearchUsecase } from './useCase/searchUsecase'
+import { SearchUsecase } from './useCases/searchUsecase'
 
-import { SearchView } from './view'
-import { useSearchViewModel } from './viewModel/searchViewModel'
+import { SearchView } from './views'
+import { useSearchViewModel } from './viewModels/searchViewModel'
 import { GithubApiRepository } from '../../repositories/githubapi.repository'
 import { LikedModalContextProvider } from './context/likedModalContext'
 
-import { LikedModal } from './view/LikedModal'
-import { useLikedModalViewModel } from './viewModel/likedModalViewModel'
-import { RepositoryItem } from './view/RepositoryItems'
-import { useRepositoryItemModalViewModel } from './viewModel/repositoryItemViewModel'
+import { LikedModal } from './views/LikedModal'
+import { useLikedModalViewModel } from './viewModels/likedModalViewModel'
+import { RepositoryItem } from './views/RepositoryItems'
+
+import { useRepositoryItemModalViewModel } from './viewModels/repositoryItemViewModel'
 
 const RepositoryItemWrapper = ({ repository }: any) => {
   const viewModel = useRepositoryItemModalViewModel({ repository })
