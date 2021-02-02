@@ -12,12 +12,12 @@ import { RepositoryItem } from './views/RepositoryItems'
 
 import { useRepositoryItemModalViewModel } from './viewModels/repositoryItemViewModel'
 
-const RepositoryItemWrapper = ({ repository }: any) => {
+const RepositoryItemComponent = ({ repository }: any) => {
   const viewModel = useRepositoryItemModalViewModel({ repository })
   return <RepositoryItem viewModel={viewModel} />
 }
 
-const LikedModelWrapper = () => {
+const LikedModelComponent = () => {
   const viewModel = useLikedModalViewModel()
   return <LikedModal viewModel={viewModel} />
 }
@@ -30,8 +30,8 @@ const ContextWrapper = () => {
   return (
     <SearchView
       viewModel={viewModel}
-      RepositoryItemComponent={RepositoryItemWrapper}
-      LikedModalComponent={LikedModelWrapper}
+      RepositoryItemComponent={RepositoryItemComponent}
+      LikedModalComponent={LikedModelComponent}
     />
   )
 }

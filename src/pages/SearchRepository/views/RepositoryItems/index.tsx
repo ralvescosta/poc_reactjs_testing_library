@@ -1,9 +1,10 @@
 import React from 'react'
+import { IRepositoryItemViewModel } from '../../interfaces/irepositoryItemViewModel'
 
 import './styles.css'
 
 type Props = {
-  viewModel: any
+  viewModel: IRepositoryItemViewModel
 }
 
 export const RepositoryItem = ({ viewModel }: Props) => {
