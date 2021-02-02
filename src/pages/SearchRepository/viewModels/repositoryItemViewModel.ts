@@ -9,10 +9,11 @@ type Props = {
 }
 
 export const useRepositoryItemModalViewModel = ({ repository }: Props): IRepositoryItemViewModel => {
-  const { setModalDisplay } = useContext(LikedModalContext)
+  const { setModalDisplay, setRepository } = useContext(LikedModalContext)
 
   const openModal = () => {
     setModalDisplay('block')
+    setRepository(repository)
   }
 
   return { openModal, repository }
