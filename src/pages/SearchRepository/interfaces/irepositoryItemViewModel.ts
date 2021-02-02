@@ -1,7 +1,6 @@
 import { RepositoryModel } from '../../../models/repositoryModel'
 
-export interface ILikedModalViewModel {
-  modalDisplay: string
+export interface IRepositoryItemViewModel {
+  openModal: () => void
   repository: RepositoryModel
-  closeModal: () => void
 }

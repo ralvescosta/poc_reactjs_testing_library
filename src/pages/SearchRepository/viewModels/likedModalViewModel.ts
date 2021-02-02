@@ -4,11 +4,11 @@ import { LikedModalContext } from '../context/likedModalContext'
 import { ILikedModalViewModel } from '../interfaces/ilikedModalViewModel'
 
 export const useLikedModalViewModel = (): ILikedModalViewModel => {
-  const { modalDisplay, setModalDisplay } = useContext(LikedModalContext)
+  const { modalDisplay, repository, setModalDisplay } = useContext(LikedModalContext)
 
-  const openModal = async () => {
-    setModalDisplay('block')
+  const closeModal = async () => {
+    setModalDisplay('none')
   }
 
-  return { modalDisplay, openModal }
+  return { modalDisplay, repository, closeModal }
 }

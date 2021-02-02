@@ -1,12 +1,19 @@
 import { useContext } from 'react'
+import { RepositoryModel } from '../../../models/repositoryModel'
 
 import { LikedModalContext } from '../context/likedModalContext'
+import { IRepositoryItemViewModel } from '../interfaces/irepositoryItemViewModel'
 
-export const useRepositoryItemModalViewModel = ({ repository }: any): any => {
-  const { setModalDisplay } = useContext(LikedModalContext)
+type Props = {
+  repository: RepositoryModel
+}
+
+export const useRepositoryItemModalViewModel = ({ repository }: Props): IRepositoryItemViewModel => {
+  const { setModalDisplay, setRepository } = useContext(LikedModalContext)
 
   const openModal = () => {
     setModalDisplay('block')
+    setRepository(repository)
   }
 
   return { openModal, repository }
