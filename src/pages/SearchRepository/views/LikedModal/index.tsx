@@ -9,7 +9,7 @@ type Props = {
 
 export const LikedModal = ({ viewModel }: Props) => {
   return (
-    <div id="myModal" className={`liked-modal ${viewModel.modalDisplay}`}>
+    <div id="myModal" data-testid='modal' className={`liked-modal ${viewModel.modalDisplay}`}>
       <div className="liked-modal-content">
         <span className="liked-modal-close" onClick={viewModel.closeModal}>&times;</span>
 

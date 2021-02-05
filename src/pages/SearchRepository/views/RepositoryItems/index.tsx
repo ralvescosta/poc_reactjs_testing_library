@@ -11,7 +11,7 @@ export const RepositoryItem = ({ viewModel }: Props) => {
   return (
     <li className="repository-item-container">
       <img className="repository-item-avatar" src={viewModel.repository.ownerAvatarUrl} />
-      {console.log(viewModel)}
+
       <div className="repository-item-content">
         <strong>{viewModel.repository.fullName}</strong>
 
