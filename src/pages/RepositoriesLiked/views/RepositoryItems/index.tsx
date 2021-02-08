@@ -34,7 +34,7 @@ export const RepositoryItem = ({ viewModel }: Props) => {
         </div>
       </div>
 
-      <button className="repository-item-remove-button" onClick={() => alert('NAO FAZ NADA AINDA')}>REMOVE</button>
+      <button className="repository-item-remove-button" onClick={viewModel.deleteRepository}>DELETE</button>
     </li>
   )
 }
