@@ -13,8 +13,8 @@ export const LikedModal = ({ viewModel }: Props) => {
       <div className="liked-modal-content">
         <span className="liked-modal-close" onClick={viewModel.closeModal}>&times;</span>
 
-        <div className="liked-modal-repository">
-          <strong>{viewModel?.repository?.fullName}</strong>
+        <div className="liked-modal-repository" >
+          <strong data-testid='modal-repository-full-name'>{viewModel?.repository?.fullName}</strong>
           <img className="liked-modal-repository-image" src={viewModel?.repository?.ownerAvatarUrl} />
           <span>{viewModel?.repository?.description}</span>
           <button className="liked-modal-repository-button">SAVE</button>

@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 
 import { useLikedModalViewModel } from '../../viewModels/likedModalViewModel'
 import { LikedModal } from './index'

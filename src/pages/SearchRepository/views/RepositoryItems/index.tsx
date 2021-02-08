@@ -9,7 +9,7 @@ type Props = {
 
 export const RepositoryItem = ({ viewModel }: Props) => {
   return (
-    <li className="repository-item-container">
+    <li className="repository-item-container" data-testid='repositoryItem'>
       <img className="repository-item-avatar" src={viewModel.repository.ownerAvatarUrl} />
 
       <div className="repository-item-content">
