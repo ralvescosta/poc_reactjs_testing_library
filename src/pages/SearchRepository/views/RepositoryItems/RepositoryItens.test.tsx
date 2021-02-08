@@ -1,11 +1,9 @@
 import React from 'react'
 import { LikedModalContextProvider } from '../../context/likedModalContext'
 import { RepositoryItem } from './index'
-import { useRepositoryItemModalViewModel } from '../../viewModels/repositoryItemViewModel'
 import { IRepositoryItemViewModel } from '../../interfaces/irepositoryItemViewModel'
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { RepositoryModel } from '../../../../models/repositoryModel'
 const repositoryFake:any = {
   id: 1,
   description: 'Repository Teste',

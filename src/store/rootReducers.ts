@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 import { repositoriesReducer, TRepositoriesReducer } from './repositoriesReducer'
 
 export type TRootReducer = {
-  repositoriesStore: TRepositoriesReducer
+  repositoriesReducer: TRepositoriesReducer
 }
 
 export const RootReducer = combineReducers({

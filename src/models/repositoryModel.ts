@@ -1,5 +1,5 @@
 export class RepositoryModel {
-  constructor(
+  constructor (
     public readonly id: number,
     public readonly fullName: string,
     public readonly description: string,
@@ -11,7 +11,7 @@ export class RepositoryModel {
     public readonly releasesUrl: string
   ) {}
 
-  static create({
+  static create ({
     id,
     fullName,
     description,
@@ -20,9 +20,9 @@ export class RepositoryModel {
     openIssues,
     ownerId,
     ownerAvatarUrl,
-    releasesUrl,
+    releasesUrl
   }: RepositoryModel): RepositoryModel {
-    const release = `${releasesUrl.split("{")[0]}/latest`;
+    const release = `${releasesUrl.split('{')[0]}/latest`
 
     return new RepositoryModel(
       id,
@@ -34,6 +34,6 @@ export class RepositoryModel {
       ownerId,
       ownerAvatarUrl,
       release
-    );
+    )
   }
 }
