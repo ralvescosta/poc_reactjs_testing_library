@@ -4,4 +4,5 @@ export interface ILikedModalViewModel {
   modalDisplay: string
   repository: RepositoryModel
   closeModal: () => void
+  saveRepository: () => void
 }

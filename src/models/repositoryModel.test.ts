@@ -12,8 +12,8 @@ const fakeRepositoryCreated = {
   releasesUrl: 'relesed',
   stargazersCount: 5
 }
-describe('Teste Model Repository', () => {
-  it('should ', () => {
+describe('Test Model Repository', () => {
+  it('should create a model correctly', () => {
     const sut = RepositoryModel.create(fakeRepositoryCreated)
     expect(sut.id).toBe(fakeRepositoryCreated.id)
   })
