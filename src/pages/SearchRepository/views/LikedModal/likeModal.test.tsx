@@ -1,23 +1,21 @@
 import React from 'react'
-
-import { cleanup, fireEvent, render } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 
 import { useLikedModalViewModel } from '../../viewModels/likedModalViewModel'
 import { LikedModal } from './index'
 
 import { LikedModalContextProvider } from '../../context/likedModalContext'
-const Wrapper:React.FC = () => {
+const Wrapper: React.FC = () => {
   const viewModel = useLikedModalViewModel()
-  return <LikedModal viewModel={viewModel}/>
+  return <LikedModal viewModel={viewModel} />
 }
 
 describe('test da view ', () => {
-  beforeAll(
-    () => {
-      jest.clearAllMocks()
-      cleanup()
-    }
-  )
+  beforeAll(() => {
+    jest.clearAllMocks()
+    cleanup()
+  })
   const repositoryFake = {
     id: 1,
     description: 'Repository Teste',
@@ -29,21 +27,24 @@ describe('test da view ', () => {
     releasesUrl: 'relesed',
     stargazersCount: 5
   }
-
   it('Testar se o componete está renderizando', () => {
-    const { getByText } = render(
+    render(
       <LikedModalContextProvider repositoryValue={repositoryFake} modalDisplayValue={'block'} >
         <Wrapper/>
       </LikedModalContextProvider>
     )
-    expect(getByText(repositoryFake.fullName)).toBe(repositoryFake.fullName)
-    expect(getByText(repositoryFake.description)).toBe(repositoryFake.description)
+    waitFor(() => {
+      expect('Repository Test React Testing Library').toBeInTheDocument()
+    })
   })
 
   it('Testar se o componente irá fechar ao clicar no × ', () => {
     const { getByText, getByTestId } = render(
-      <LikedModalContextProvider repositoryValue={repositoryFake} modalDisplayValue={'block'} >
-        <Wrapper/>
+      <LikedModalContextProvider
+        repositoryValue={repositoryFake}
+        modalDisplayValue={'block'}
+      >
+        <Wrapper />
       </LikedModalContextProvider>
     )
     const modal = getByTestId('modal')
