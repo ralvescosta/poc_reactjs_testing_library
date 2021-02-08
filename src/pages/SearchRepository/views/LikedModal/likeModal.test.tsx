@@ -6,9 +6,15 @@ import { useLikedModalViewModel } from '../../viewModels/likedModalViewModel'
 import { LikedModal } from './index'
 
 import { LikedModalContextProvider } from '../../context/likedModalContext'
+import { RootReducer } from '../../../../store/rootReducers'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+const store = createStore(RootReducer)
 const Wrapper: React.FC = () => {
   const viewModel = useLikedModalViewModel()
-  return <LikedModal viewModel={viewModel} />
+  return (
+  <LikedModal viewModel={viewModel} />
+  )
 }
 
 describe('test da view ', () => {
@@ -27,11 +33,14 @@ describe('test da view ', () => {
     releasesUrl: 'relesed',
     stargazersCount: 5
   }
+
   it('Testar se o componete está renderizando', () => {
-    render(
-      <LikedModalContextProvider repositoryValue={repositoryFake} modalDisplayValue={'block'} >
+    render(<Provider store={store}>
+    <LikedModalContextProvider repositoryValue={repositoryFake} modalDisplayValue={'block'} >
         <Wrapper/>
       </LikedModalContextProvider>
+
+    </Provider>
     )
     waitFor(() => {
       expect('Repository Test React Testing Library').toBeInTheDocument()
@@ -40,12 +49,15 @@ describe('test da view ', () => {
 
   it('Testar se o componente irá fechar ao clicar no × ', () => {
     const { getByText, getByTestId } = render(
-      <LikedModalContextProvider
+      <Provider store={store}>
+ <LikedModalContextProvider
         repositoryValue={repositoryFake}
         modalDisplayValue={'block'}
       >
         <Wrapper />
       </LikedModalContextProvider>
+      </Provider>
+
     )
     const modal = getByTestId('modal')
     const buttonClose = getByText('×')

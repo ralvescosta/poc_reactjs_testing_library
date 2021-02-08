@@ -13,6 +13,9 @@ import { render, fireEvent, waitFor } from '@testing-library/react'
 import { LikedModalContextProvider } from './context/likedModalContext'
 
 import '@testing-library/jest-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { RootReducer } from '../../store/rootReducers'
 
 const repositoryFake:RepositoryModel[] = [
   {
@@ -53,19 +56,27 @@ const LikedModelComponent = () => {
   const viewModel = useLikedModalViewModel()
   return <LikedModal viewModel={viewModel} />
 }
+const store = createStore(RootReducer)
 const Wrapper = () => {
   const searchUsecase = new SearchUsecase(githubApiRepositoryStub)
   const viewModel = useSearchViewModel({ searchUsecase })
   return (
-  <SearchView viewModel={viewModel} LikedModalComponent={LikedModelComponent} RepositoryItemComponent={RepositoryItemComponent}/>
+   < Provider store={store}>
+  <SearchView viewModel={viewModel} LikedModalComponent={LikedModelComponent}
+  RepositoryItemComponent={RepositoryItemComponent}/>
+  </Provider>
   )
 }
 
 describe('Buscar ', () => {
   it('Testando renderização de componentes ', async () => {
-    const { getByPlaceholderText, getByText, getAllByTestId } = render(<LikedModalContextProvider>
+    const { getByPlaceholderText, getByText, getAllByTestId } = render(
+
+<LikedModalContextProvider>
       <Wrapper/>
-    </LikedModalContextProvider>)
+    </LikedModalContextProvider>
+
+    )
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
     await waitFor(() => {
@@ -78,9 +89,13 @@ describe('Buscar ', () => {
   })
 
   it('Testando aberura Modal  ', async () => {
-    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(<LikedModalContextProvider>
+    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(
+
+ <LikedModalContextProvider>
       <Wrapper/>
-    </LikedModalContextProvider>)
+    </LikedModalContextProvider>
+
+    )
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
 
@@ -98,9 +113,13 @@ describe('Buscar ', () => {
   })
 
   it('Testando Conteudo do modal React', async () => {
-    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(<LikedModalContextProvider>
+    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(
+
+    <LikedModalContextProvider>
       <Wrapper/>
-    </LikedModalContextProvider>)
+    </LikedModalContextProvider>
+
+    )
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
 
@@ -122,9 +141,13 @@ describe('Buscar ', () => {
   })
 
   it('Testando Conteudo do modal Vue ', async () => {
-    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(<LikedModalContextProvider>
+    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(
+
+ <LikedModalContextProvider>
       <Wrapper/>
-    </LikedModalContextProvider>)
+    </LikedModalContextProvider>
+
+    )
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
 
