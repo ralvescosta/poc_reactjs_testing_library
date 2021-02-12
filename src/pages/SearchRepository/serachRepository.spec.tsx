@@ -17,7 +17,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { RootReducer } from '../../store/rootReducers'
 
-const repositoryFake:RepositoryModel[] = [
+const repositoryFake: RepositoryModel[] = [
   {
     id: 1,
     description: 'repositorio do React',
@@ -42,9 +42,8 @@ const repositoryFake:RepositoryModel[] = [
   }
 ]
 
-const githubApiRepositoryStub:ISearchGithubApiRepository = {
+const githubApiRepositoryStub: ISearchGithubApiRepository = {
   searchRepository: () => Promise.resolve(repositoryFake)
-
 }
 
 const RepositoryItemComponent = ({ repository }: any) => {
@@ -61,22 +60,21 @@ const Wrapper = () => {
   const searchUsecase = new SearchUsecase(githubApiRepositoryStub)
   const viewModel = useSearchViewModel({ searchUsecase })
   return (
-   < Provider store={store}>
-  <SearchView viewModel={viewModel} LikedModalComponent={LikedModelComponent}
-  RepositoryItemComponent={RepositoryItemComponent}/>
-  </Provider>
+    <Provider store={store}>
+      <SearchView
+        viewModel={viewModel}
+        LikedModalComponent={LikedModelComponent}
+        RepositoryItemComponent={RepositoryItemComponent}
+      />
+    </Provider>
   )
 }
 
 describe('Buscar ', () => {
   it('Testando renderização de componentes ', async () => {
-    const { getByPlaceholderText, getByText, getAllByTestId } = render(
-
-<LikedModalContextProvider>
-      <Wrapper/>
-    </LikedModalContextProvider>
-
-    )
+    const { getByPlaceholderText, getByText, getAllByTestId } = render(<LikedModalContextProvider>
+      <Wrapper />
+    </LikedModalContextProvider>)
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
     await waitFor(() => {
@@ -89,12 +87,15 @@ describe('Buscar ', () => {
   })
 
   it('Testando aberura Modal  ', async () => {
-    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(
-
- <LikedModalContextProvider>
-      <Wrapper/>
-    </LikedModalContextProvider>
-
+    const {
+      getByPlaceholderText,
+      getByText,
+      getAllByText,
+      getByTestId
+    } = render(
+      <LikedModalContextProvider>
+        <Wrapper />
+      </LikedModalContextProvider>
     )
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
@@ -113,12 +114,15 @@ describe('Buscar ', () => {
   })
 
   it('Testando Conteudo do modal React', async () => {
-    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(
-
-    <LikedModalContextProvider>
-      <Wrapper/>
-    </LikedModalContextProvider>
-
+    const {
+      getByPlaceholderText,
+      getByText,
+      getAllByText,
+      getByTestId
+    } = render(
+      <LikedModalContextProvider>
+        <Wrapper />
+      </LikedModalContextProvider>
     )
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
@@ -141,12 +145,15 @@ describe('Buscar ', () => {
   })
 
   it('Testando Conteudo do modal Vue ', async () => {
-    const { getByPlaceholderText, getByText, getAllByText, getByTestId } = render(
-
- <LikedModalContextProvider>
-      <Wrapper/>
-    </LikedModalContextProvider>
-
+    const {
+      getByPlaceholderText,
+      getByText,
+      getAllByText,
+      getByTestId
+    } = render(
+      <LikedModalContextProvider>
+        <Wrapper />
+      </LikedModalContextProvider>
     )
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')

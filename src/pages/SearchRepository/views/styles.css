@@ -10,36 +10,40 @@
 }
 
 .search-view-input {
-  width: 40%;
-  height: 20px;
+  width: 40vw;
+  height: 40px;
   border: none;
-  box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.45); 
+
   padding: 10px;
   border-radius: 6px;
+  border: none;
 }
-
+.search-view-message {
+  color: #fff;
+  margin-bottom: 0;
+}
 .search-view-button {
   margin-top: 30px;
-  border: none;
-
-  background: #0a3c7e;
-  box-shadow:  10px 10px 5px 0px rgba(0, 0, 0, 0.26); 
-  width: 40%;
-  height: 40px;
+  background: #247e8a;
+  width: 41vw;
+  height: 60px;
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
+  border: none;
+}
+.search-view-button:hover {
+  background: #1e707b;
 }
 
 .search-view-repository-container {
-  padding: 0;
+  padding: 20px;
   max-height: 750px;
   height: 100%;
   width: 70%;
   margin-top: 50px;
   overflow-y: scroll;
   overflow-x: hidden;
-  box-shadow:  5px 5px 5px 5px rgba(0,0,0,0.45); 
   border-radius: 6px;
   list-style-type: none;
 }

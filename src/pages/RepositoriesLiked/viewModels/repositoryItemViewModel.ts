@@ -4,13 +4,13 @@ import { deleteRepositoryAction } from '../../../store/repositoriesActions'
 
 import { RepositoryModel } from '../../../models/repositoryModel'
 
-import { IRepositoryItemViewModel } from '../interfaces/irepositoryItemViewModel'
+import { IRepositoryItemLikedViewModel } from '../interfaces/irepositoryItemViewModel'
 
 type Props = {
   repository: RepositoryModel
 }
 
-export const useRepositoryItemModalViewModel = ({ repository }: Props): IRepositoryItemViewModel => {
+export const useRepositoryItemModalViewModel = ({ repository }: Props): IRepositoryItemLikedViewModel => {
   const dispatchActions = useDispatch()
 
   const deleteRepository = () => {

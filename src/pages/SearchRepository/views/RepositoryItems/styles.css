@@ -1,18 +1,22 @@
-.repository-item-container{
+.repository-item-container {
   width: 99%;
   /* height: 100px; */
-  border: solid 1px rgb(7, 7, 7);
+  border: solid 3px #351649;
   border-radius: 6px;
   margin-bottom: 10px;
-  
+  color: #351649;
   padding: 5px;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+.repository-item-container:hover {
+  transition: 200ms ease;
+  transform: scale(1.01);
+}
 
-.repository-item-container:nth-last-child(){
+.repository-item-container:nth-last-child() {
   margin-bottom: 0;
 }
 
@@ -20,10 +24,9 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  
 }
 
-.repository-item-content{
+.repository-item-content {
   width: 60%;
   height: 150px;
   display: flex;
@@ -37,21 +40,21 @@
   max-height: 100px;
 }
 
-.repository-item-content-indicators{
+.repository-item-content-indicators {
   display: flex;
   justify-content: space-between;
 }
 
-.repository-item-like-button{
+.repository-item-like-button {
   width: 10%;
   height: 40px;
   border-radius: 6px;
   border: none;
-  background-color: forestgreen;
+  background-color: #247e8a;
   cursor: pointer;
   color: #fff;
 }
 
-.repository-item-like-button:hover{
-  background-color: rgb(37, 102, 37);
+.repository-item-like-button:hover {
+  background-color: #26666f;
 }

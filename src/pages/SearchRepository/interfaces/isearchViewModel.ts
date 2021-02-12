@@ -6,4 +6,5 @@ export interface ISearchViewModel {
   btnText: string
   repositories: RepositoryModel[]
   search: () => void
+  errorMenssage:boolean
 }

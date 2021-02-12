@@ -10,12 +10,13 @@ type Props = {
 
 export const RepositoriesLikedView = ({ viewModel, RepositoryItemComponent }: Props) => {
   return (
-    <div className="search-view-container">
+    <div className="search-view-container" data-testId='container'>
       {viewModel.repositories.length
         ? <ul className="search-view-repository-container">
             {
               viewModel.repositories.map(repository => (
-                <RepositoryItemComponent key={repository.id} repository={repository} />
+                <RepositoryItemComponent key={repository.id} repository={repository}
+                deleteRepository={viewModel.deleteRepository} />
               ))
             }
             </ul>

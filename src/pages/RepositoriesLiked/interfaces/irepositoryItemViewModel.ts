@@ -1,6 +1,6 @@
 import { RepositoryModel } from '../../../models/repositoryModel'
 
-export interface IRepositoryItemViewModel {
+export interface IRepositoryItemLikedViewModel {
   repository: RepositoryModel
   deleteRepository: () => void
 }

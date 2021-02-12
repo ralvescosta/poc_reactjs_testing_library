@@ -11,12 +11,13 @@ export const useSearchViewModel = ({ searchUsecase }: Props): ISearchViewModel =
   const searchInputRef = useRef<HTMLInputElement>(null)
   const [repositories, setRepositories] = useState<RepositoryModel[]>([])
   const [btnText, setBtnText] = useState('BUSCAR')
-
+  const [errorMenssage, setErroMenssage] = useState(false)
   const search = async () => {
+    setErroMenssage(false)
     const githubRepository = searchInputRef.current?.value
 
     if (!githubRepository) {
-      return alert('Digite Alguma Coisa meu filho!')
+      return setErroMenssage(true)
     }
 
     setBtnText('CARREGANDO...')
@@ -28,5 +29,5 @@ export const useSearchViewModel = ({ searchUsecase }: Props): ISearchViewModel =
     if (searchInputRef.current?.value) searchInputRef.current.value = ''
   }
 
-  return { searchInputRef, btnText, repositories, search }
+  return { searchInputRef, btnText, repositories, search, errorMenssage }
 }

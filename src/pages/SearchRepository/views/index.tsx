@@ -16,7 +16,9 @@ export const SearchView = ({ viewModel, LikedModalComponent, RepositoryItemCompo
       <div className="search-view-container">
 
         <input className="search-view-input" placeholder="DIGITE O NOME DO REPOSITORIO..." ref={viewModel.searchInputRef}/>
-
+        {
+          viewModel.errorMenssage && <p className='search-view-message'>Digite algo ai meu filho</p>
+        }
         <button className="search-view-button" onClick={viewModel.search}>{viewModel.btnText}</button>
 
         {viewModel.repositories.length
