@@ -10,7 +10,7 @@ type Props = {
 
 export const RepositoriesLikedView = ({ viewModel, RepositoryItemComponent }: Props) => {
   return (
-    <div className="search-view-container" data-testId='container'>
+    <div className="search-view-container" data-testid='container'>
       {viewModel.repositories.length
         ? <ul className="search-view-repository-container">
             {

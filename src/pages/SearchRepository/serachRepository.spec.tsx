@@ -56,25 +56,30 @@ const LikedModelComponent = () => {
   return <LikedModal viewModel={viewModel} />
 }
 const store = createStore(RootReducer)
-const Wrapper = () => {
+const Wrapper = ({ githubApiRepositoryStub }:any) => {
   const searchUsecase = new SearchUsecase(githubApiRepositoryStub)
   const viewModel = useSearchViewModel({ searchUsecase })
   return (
     <Provider store={store}>
+      <LikedModalContextProvider>
       <SearchView
         viewModel={viewModel}
         LikedModalComponent={LikedModelComponent}
         RepositoryItemComponent={RepositoryItemComponent}
       />
+      </LikedModalContextProvider>
+
     </Provider>
   )
 }
 
+const sut = (githubApiRepositoryStub:any) => {
+  return render(<Wrapper githubApiRepositoryStub={githubApiRepositoryStub}/>)
+}
+
 describe('Buscar ', () => {
   it('Testando renderização de componentes ', async () => {
-    const { getByPlaceholderText, getByText, getAllByTestId } = render(<LikedModalContextProvider>
-      <Wrapper />
-    </LikedModalContextProvider>)
+    const { getByPlaceholderText, getByText, getAllByTestId } = sut(githubApiRepositoryStub)
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
     await waitFor(() => {
@@ -92,11 +97,7 @@ describe('Buscar ', () => {
       getByText,
       getAllByText,
       getByTestId
-    } = render(
-      <LikedModalContextProvider>
-        <Wrapper />
-      </LikedModalContextProvider>
-    )
+    } = sut(githubApiRepositoryStub)
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
 
@@ -119,11 +120,7 @@ describe('Buscar ', () => {
       getByText,
       getAllByText,
       getByTestId
-    } = render(
-      <LikedModalContextProvider>
-        <Wrapper />
-      </LikedModalContextProvider>
-    )
+    } = sut(githubApiRepositoryStub)
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
 
@@ -150,11 +147,8 @@ describe('Buscar ', () => {
       getByText,
       getAllByText,
       getByTestId
-    } = render(
-      <LikedModalContextProvider>
-        <Wrapper />
-      </LikedModalContextProvider>
-    )
+    } = sut(githubApiRepositoryStub)
+
     const input = getByPlaceholderText('DIGITE O NOME DO REPOSITORIO...')
     const buscar = getByText('BUSCAR')
 
@@ -177,5 +171,23 @@ describe('Buscar ', () => {
 
     fireEvent.click(buttonClose)
     expect(modal).toHaveClass('none')
+  })
+
+  it('should ', async () => {
+    const githubApiRepositoryStubR: ISearchGithubApiRepository = {
+      searchRepository: () => Promise.resolve([])
+    }
+
+    const {
+      getByText
+    } = sut(githubApiRepositoryStubR)
+
+    const buscar = getByText('BUSCAR')
+    await waitFor(() => {
+      fireEvent.click(buscar)
+    })
+
+    const erro = getByText('Digite algo ai meu filho')
+    expect(erro).toBeInTheDocument()
   })
 })

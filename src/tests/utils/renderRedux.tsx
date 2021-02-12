@@ -3,15 +3,15 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { RootReducer } from '../../store/rootReducers'
 // Import your own reducer
 
 function renderWithRedux (
   Element:React.ReactElement,
-  reducer:any,
   initialState:any
 ) {
   const Wrapper = ({ children }:any) => {
-    const fakeStore = createStore(reducer, initialState)
+    const fakeStore = createStore(RootReducer, initialState)
 
     return <Provider store={fakeStore}>{children}</Provider>
   }

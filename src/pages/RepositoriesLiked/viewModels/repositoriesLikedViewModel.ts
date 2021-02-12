@@ -8,6 +8,7 @@ import { IRepositoriesLikedViewModel } from '../interfaces/irepositoriesLikedVie
 
 export const useRepositoriesLikedViewModel = (): IRepositoriesLikedViewModel => {
   const repositories = useSelector((state:TRootReducer) => state.repositoriesReducer.repositories)
+
   const dispatchActions = useDispatch()
 
   const deleteRepository = (repository:RepositoryModel) => {
