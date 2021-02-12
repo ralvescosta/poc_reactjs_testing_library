@@ -6,7 +6,7 @@ import { RepositoryModel } from '../../models/repositoryModel'
 
 import { renderWithRedux } from '../../tests/utils/renderRedux'
 
-const repositorysFake:RepositoryModel[] = [
+const repositoriesFake:RepositoryModel[] = [
   {
     id: 1,
     description: 'Repository Vue',
@@ -32,19 +32,17 @@ const repositorysFake:RepositoryModel[] = [
 ]
 const initialState = {
   repositoriesReducer: {
-    repositories: repositorysFake
+    repositories: repositoriesFake
   }
 
 }
 
 describe('Name of the group', () => {
   it('should ', () => {
-    const { getAllByText, debug } = renderWithRedux(<RepositoriesLiked/>, initialState)
+    const { getAllByText } = renderWithRedux(<RepositoriesLiked/>, initialState)
     const DELETE = getAllByText('DELETE')
 
     fireEvent.click(DELETE[0])
     fireEvent.click(DELETE[1])
-
-    debug()
   })
 })
