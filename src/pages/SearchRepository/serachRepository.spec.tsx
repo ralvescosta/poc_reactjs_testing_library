@@ -55,6 +55,7 @@ const LikedModelComponent = () => {
   const viewModel = useLikedModalViewModel()
   return <LikedModal viewModel={viewModel} />
 }
+
 const store = createStore(RootReducer)
 const Wrapper = ({ githubApiRepositoryStub }:any) => {
   const searchUsecase = new SearchUsecase(githubApiRepositoryStub)
@@ -91,7 +92,7 @@ describe('Buscar ', () => {
     expect(repositorys.length).toBe(2)
   })
 
-  it('Testando aberura Modal  ', async () => {
+  it('Testando abertura Modal  ', async () => {
     const {
       getByPlaceholderText,
       getByText,
@@ -173,21 +174,21 @@ describe('Buscar ', () => {
     expect(modal).toHaveClass('none')
   })
 
-  it('should ', async () => {
-    const githubApiRepositoryStubR: ISearchGithubApiRepository = {
-      searchRepository: () => Promise.resolve([])
-    }
+  it('Testar se caso uma busca for efetuada sem escrever nada no input ',
+    async () => {
+      const githubApiRepositoryStubR: ISearchGithubApiRepository = {
+        searchRepository: () => Promise.resolve([])
+      }
 
-    const {
-      getByText
-    } = sut(githubApiRepositoryStubR)
+      const {
+        getByText
+      } = sut(githubApiRepositoryStubR)
 
-    const buscar = getByText('BUSCAR')
-    await waitFor(() => {
-      fireEvent.click(buscar)
+      const buscar = getByText('BUSCAR')
+      await waitFor(() => {
+        fireEvent.click(buscar)
+      })
+
+      expect(getByText('Digite algo ai meu filho')).toBeInTheDocument()
     })
-
-    const erro = getByText('Digite algo ai meu filho')
-    expect(erro).toBeInTheDocument()
-  })
 })

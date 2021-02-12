@@ -3,8 +3,8 @@ import { fireEvent } from '@testing-library/react'
 import { RepositoriesLiked } from '.'
 
 import { RepositoryModel } from '../../models/repositoryModel'
-
 import { renderWithRedux } from '../../tests/utils/renderRedux'
+import '@testing-library/jest-dom'
 
 const repositorysFake:RepositoryModel[] = [
   {
@@ -37,14 +37,33 @@ const initialState = {
 
 }
 
-describe('Name of the group', () => {
-  it('should ', () => {
-    const { getAllByText, debug } = renderWithRedux(<RepositoriesLiked/>, initialState)
-    const DELETE = getAllByText('DELETE')
+describe('Teste de integracao do RepositoriesLiked', () => {
+  it('Testar se o componente irá renderizar  ', () => {
+    const { getByText } = renderWithRedux(<RepositoriesLiked/>, initialState)
 
-    fireEvent.click(DELETE[0])
-    fireEvent.click(DELETE[1])
+    expect(getByText(repositorysFake[0].fullName)).toBeInTheDocument()
+    expect(getByText(repositorysFake[0].description)).toBeInTheDocument()
+    expect(getByText(repositorysFake[0].forks)).toBeInTheDocument()
+    expect(getByText(repositorysFake[0].openIssues)).toBeInTheDocument()
 
-    debug()
+    expect(getByText(repositorysFake[1].fullName)).toBeInTheDocument()
+    expect(getByText(repositorysFake[1].description)).toBeInTheDocument()
+    expect(getByText(repositorysFake[1].forks)).toBeInTheDocument()
+    expect(getByText(repositorysFake[1].openIssues)).toBeInTheDocument()
+  })
+
+  it('Testar a funcionalidade de deletetar o repositorio da minha lista ', () => {
+    const { getAllByText, queryByText } = renderWithRedux(<RepositoriesLiked/>, initialState)
+
+    expect(queryByText(repositorysFake[0].fullName)).toBeInTheDocument()
+    expect(queryByText(repositorysFake[1].fullName)).toBeInTheDocument()
+
+    const botoesDeletar = getAllByText('DELETE')
+    fireEvent.click(botoesDeletar[0])
+
+    expect(queryByText(repositorysFake[0].fullName)).not.toBeInTheDocument()
+
+    fireEvent.click(botoesDeletar[1])
+    expect(queryByText(repositorysFake[1].fullName)).not.toBeInTheDocument()
   })
 })

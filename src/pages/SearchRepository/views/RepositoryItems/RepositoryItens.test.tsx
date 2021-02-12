@@ -6,28 +6,6 @@ import { IRepositoryItemViewModel } from '../../interfaces/irepositoryItemViewMo
 import { cleanup, fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-const repositoryFake:any = {
-  id: 1,
-  description: 'Repository Teste',
-  forks: 10,
-  fullName: 'Repository Test React Testing Library',
-  openIssues: 3,
-  ownerAvatarUrl: 'null',
-  ownerId: 5,
-  releasesUrl: 'relesed',
-  stargazersCount: 200
-}
-
-const viewModelStub:IRepositoryItemViewModel = {
-  openModal: jest.fn(),
-  repository: repositoryFake
-}
-
-const Wrapper = () => {
-  return (
-<RepositoryItem viewModel={viewModelStub}/>
-  )
-}
 describe('Testando renderização do Card', () => {
   beforeAll(
     () => {
@@ -35,13 +13,38 @@ describe('Testando renderização do Card', () => {
       cleanup()
     }
   )
-  it('should ', () => {
-    const { queryByText } = render(
-    <LikedModalContextProvider repositoryValue={repositoryFake} modalDisplayValue={'none'} >
-    <Wrapper/>
-    </LikedModalContextProvider>
+  const repositoryFake:any = {
+    id: 1,
+    description: 'Repository Teste',
+    forks: 10,
+    fullName: 'Repository Test React Testing Library',
+    openIssues: 3,
+    ownerAvatarUrl: 'null',
+    ownerId: 5,
+    releasesUrl: 'relesed',
+    stargazersCount: 200
+  }
+
+  const viewModelStub:IRepositoryItemViewModel = {
+    openModal: jest.fn(),
+    repository: repositoryFake
+  }
+
+  const Wrapper = () => {
+    return (
+  <RepositoryItem viewModel={viewModelStub}/>
+    )
+  }
+  const sut = (repositoryFake:any, modalDisplayValue:string) => {
+    return render(
+      <LikedModalContextProvider repositoryValue={repositoryFake} modalDisplayValue={modalDisplayValue} >
+      <Wrapper/>
+      </LikedModalContextProvider>
 
     )
+  }
+  it('Teste de renderização do componente ', () => {
+    const { queryByText } = sut(repositoryFake, 'none')
     const starts = queryByText(repositoryFake.stargazersCount)
     const forks = queryByText(repositoryFake.forks)
     const issues = queryByText(repositoryFake.openIssues)
@@ -54,10 +57,7 @@ describe('Testando renderização do Card', () => {
   })
 
   it('Testar se o click irá acontecer no botão', () => {
-    const { queryByText } = render(
-      <LikedModalContextProvider repositoryValue={repositoryFake} modalDisplayValue={'none'} >
-      <Wrapper/>
-      </LikedModalContextProvider>)
+    const { queryByText } = sut(repositoryFake, 'none')
 
     const LIKE = queryByText('LIKE')
 
