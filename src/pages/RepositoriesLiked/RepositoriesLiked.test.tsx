@@ -6,7 +6,7 @@ import { RepositoryModel } from '../../models/repositoryModel'
 import { renderWithRedux } from '../../tests/utils/renderRedux'
 import '@testing-library/jest-dom'
 
-const repositorysFake:RepositoryModel[] = [
+const repositoriesFake:RepositoryModel[] = [
   {
     id: 1,
     description: 'Repository Vue',
@@ -32,7 +32,7 @@ const repositorysFake:RepositoryModel[] = [
 ]
 const initialState = {
   repositoriesReducer: {
-    repositories: repositorysFake
+    repositories: repositoriesFake
   }
 
 }
@@ -41,29 +41,29 @@ describe('Teste de integracao do RepositoriesLiked', () => {
   it('Testar se o componente irá renderizar  ', () => {
     const { getByText } = renderWithRedux(<RepositoriesLiked/>, initialState)
 
-    expect(getByText(repositorysFake[0].fullName)).toBeInTheDocument()
-    expect(getByText(repositorysFake[0].description)).toBeInTheDocument()
-    expect(getByText(repositorysFake[0].forks)).toBeInTheDocument()
-    expect(getByText(repositorysFake[0].openIssues)).toBeInTheDocument()
+    expect(getByText(repositoriesFake[0].fullName)).toBeInTheDocument()
+    expect(getByText(repositoriesFake[0].description)).toBeInTheDocument()
+    expect(getByText(repositoriesFake[0].forks)).toBeInTheDocument()
+    expect(getByText(repositoriesFake[0].openIssues)).toBeInTheDocument()
 
-    expect(getByText(repositorysFake[1].fullName)).toBeInTheDocument()
-    expect(getByText(repositorysFake[1].description)).toBeInTheDocument()
-    expect(getByText(repositorysFake[1].forks)).toBeInTheDocument()
-    expect(getByText(repositorysFake[1].openIssues)).toBeInTheDocument()
+    expect(getByText(repositoriesFake[1].fullName)).toBeInTheDocument()
+    expect(getByText(repositoriesFake[1].description)).toBeInTheDocument()
+    expect(getByText(repositoriesFake[1].forks)).toBeInTheDocument()
+    expect(getByText(repositoriesFake[1].openIssues)).toBeInTheDocument()
   })
 
   it('Testar a funcionalidade de deletetar o repositorio da minha lista ', () => {
     const { getAllByText, queryByText } = renderWithRedux(<RepositoriesLiked/>, initialState)
 
-    expect(queryByText(repositorysFake[0].fullName)).toBeInTheDocument()
-    expect(queryByText(repositorysFake[1].fullName)).toBeInTheDocument()
+    expect(queryByText(repositoriesFake[0].fullName)).toBeInTheDocument()
+    expect(queryByText(repositoriesFake[1].fullName)).toBeInTheDocument()
 
     const botoesDeletar = getAllByText('DELETE')
     fireEvent.click(botoesDeletar[0])
 
-    expect(queryByText(repositorysFake[0].fullName)).not.toBeInTheDocument()
+    expect(queryByText(repositoriesFake[0].fullName)).not.toBeInTheDocument()
 
     fireEvent.click(botoesDeletar[1])
-    expect(queryByText(repositorysFake[1].fullName)).not.toBeInTheDocument()
+    expect(queryByText(repositoriesFake[1].fullName)).not.toBeInTheDocument()
   })
 })
