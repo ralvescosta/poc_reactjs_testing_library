@@ -14,7 +14,7 @@ It was development to DTI KT (knowledge take shot) called "Test in Frontend with
 
 The architecture was proposed in order to facilitate the construction of automated testes. 
 
-Where an adaptation of the MVVM standard is proposed.
+Where an adaptation of the MVVM standard.
 
 
 
